@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+   
+  <h:head>
+   <h:outputStylesheet library="CSS" name="style.css" />
+	<h:outputStylesheet library="fonte" name="css/font-awesome.css"/>
+	<h:outputStylesheet library="CSS" name="cadastro.css" />
+	<title>Cadastrar usuario</title>
+  </h:head>
+   
+  <h:body>
+   <div id="tudo">
+  
+  <div id="texto-logo">
+
+    
+    <span>Hydra</span>
+ </div><!-- div textoo -->
+
+  <div id="formulario">
+
+        <h:form>
+         <p:panel header="Novo usuário">
+              <p:messages id="messages"  showDetail="true" autoUpdate="true"/>
+              <h:panelGrid columns="2" cellpadding="5" id="v">
+                    <p:outputLabel for="nomeUsuario" value="Usuário" />
+                    <p:inputText id="nomeUsuario" required="true" value="#{usuarioControle.usuario.nome}"  />                 
+                    
+                    <p:outputLabel for="senha" value="Senha" />
+                    <p:password id="senha" required="true" value="#{usuarioControle.usuario.senha}" match="senha2"/>
+                    
+  				  <p:outputLabel for="senha2" value="Confirmar Senha" />
+                    <p:password id="senha2" required="true" value="#{usuarioControle.usuario.senha}" />
+                    
+                 
+				<p:outputLabel for="console" required="true" value="Tipo de usuário" />
+				<p:selectOneRadio id="console" value="#{usuarioControle.usuario.tipo_usuario}">
+				<f:selectItem itemLabel="Administrador " itemValue="Administrador" />
+				<f:selectItem itemLabel="Operador " itemValue="Operador" />
+
+				</p:selectOneRadio>
+              </h:panelGrid>
+                <br/>
+               <p:commandButton value="Voltar" icon="ui-icon-arrowreturnthick-1-w" action="Login.xhtml" style="margin-left:160px" immediate="true" />
+                    <p:commandButton update="v" value="Salvar" icon="ui-icon-disk" action="#{usuarioControle.cadastrar}" style="margin-left:20px" ajax="false" />
+              </p:panel>
+        </h:form>
+		 </div><!-- formularioo -->
+        </div><!-- tudoo -->
+  </h:body>
+  </html>

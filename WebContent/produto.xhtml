@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	
+	<h:outputStylesheet library="CSS" name="style.css" />
+	<title>Produto</title>
+</h:head>
+<h:body>
+<div id="cabecalho">
+      
+      <div id="imagen-logo">
+       <h:graphicImage library="imagem" name="hydraaa.png" />
+      </div><!-- imagen da logo -->
+  
+  
+  		<div id="nome-logo">
+        <span>HYDRA</span>
+        </div><!-- nome logo-->
+      </div> <!--cabeçalho do site -->
+	
+	<br />
+	 <div id="menu1">
+	<h:form>
+		<p:menubar>
+			<p:menuitem value="Home" action="index.xhtml" icon="ui-icon-home" 
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Empresas" action="empresa.xhtml" icon="ui-icon-contact"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Contatos" action="contato.xhtml" icon="ui-icon-person"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Produtos" action="produto.xhtml" icon="ui-icon-cart"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:submenu label="Atividades" icon="ui-icon-suitcase"
+				style="margin-left: 40px">
+
+				<p:menuitem value="Ligações" action="listaligacao.xhtml" icon="ui-icon-flag"></p:menuitem>
+				<p:menuitem value="Tarefas" action="listartarefa.xhtml" icon="ui-icon-pin-s"></p:menuitem>
+
+			</p:submenu>
+			
+			<p:menuitem value="Negócios" action="listanegocio.xhtml" style="margin-left: 40px" icon="ui-icon-lightbulb"></p:menuitem>
+			
+		</p:menubar>
+	</h:form>
+		</div><!--  div do menu -->
+	<div id="corpo-index">
+  
+   <p:panel header="Produtos">
+   <h:form>
+	<h:message />
+   <p:commandButton value="Novo Produto" action="novoproduto.xhtml"/>
+   <br/><br/>
+	
+		<p:dataTable id="tabela" var="emp" value="#{produtoControle.lista}" paginator="true" rows="10">
+			
+			<p:column filterBy="#{emp.nome}" headerText="Nome">
+				<h:outputText value="#{emp.nome}" />
+			</p:column>
+
+			<p:column headerText="Valor">
+				<h:outputText value="#{emp.valor}">
+				<f:convertNumber pattern="#00.00"/>
+				</h:outputText>
+			</p:column>
+			<p:column headerText="">
+				<p:commandButton action="editarproduto.xhtml" value="Editar" icon="ui-icon-pencil"
+					style="margin-left: 60px" oncomplete="novoproduto.show();"
+					process="@this" update="">
+					<f:setPropertyActionListener value="#{emp}"
+						target="#{produtoControle.pro}" />
+				</p:commandButton>
+				
+				<p:commandButton action="#{produtoControle.excluir}" value="Excluir" style="margin-left: 50px" icon="ui-icon-closethick" update="tabela">
+					<f:setPropertyActionListener value="#{emp}"
+						target="#{produtoControle.pro}" />
+						</p:commandButton>
+			</p:column>
+
+		</p:dataTable> 
+		</h:form>
+	</p:panel>
+	</div><!--  div do corpo -->
+</h:body>
+</html>

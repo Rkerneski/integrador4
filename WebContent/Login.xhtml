@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+   
+  <h:head>
+		<h:outputStylesheet library="CSS" name="style.css" />
+	<h:outputStylesheet library="fonte" name="css/font-awesome.css"/>
+	<h:outputStylesheet library="CSS" name="login.css" />
+	<title>Tela de login</title>
+  </h:head>
+   
+  <h:body>
+  <div id="tudo">
+  
+
+  <h1 id="logo">Hydra</h1>
+  <div id="teste">
+       <h:form>
+       <p:panel header="Senha">
+					<p:messages id="messages" />
+               <h5>Seja bem-vindo ao sistema Hydra</h5>
+              <h:inputHidden/>
+              <h:panelGrid columns="2" cellpadding="6" style="margin-left: 40px">
+             
+          
+                    <p:outputLabel for="nomeUsuario" value="Usuário" />
+                    <p:inputText id="nomeUsuario" value="#{usuarioControle.usuario.nome}" />
+                   
+                    <p:outputLabel for="senha" value="Senha" />
+                    <p:password id="senha" value="#{usuarioControle.usuario.senha}" />
+              </h:panelGrid>
+              <br/>
+               <p:commandButton value="Entrar" icon="ui-icon-star" action="#{usuarioControle.logar}" ajax="false" 
+                    oncomplete="handleLoginRequest(xhr, status, args)" style="margin-left:120px">
+                    </p:commandButton>
+                    
+                    <p:commandButton value="Cadastrar" icon="ui-icon-person" action="CadastroUsuario.xhtml" style="margin-left:20px" immediate="true" />
+              </p:panel>
+        </h:form>
+        
+         </div>
+             </div><!-- div de tudo  -->
+  </h:body>
+  </html>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+
+	<h:outputStylesheet library="CSS" name="style.css" />
+	<title>Editar telefone empresa</title>
+</h:head>
+<h:body>
+	<div id="cabecalho">
+	<div id="imagen-logo">
+	 <h:graphicImage library="imagem" name="hydraaa.png" />
+      </div><!-- imagen da logo -->
+  
+  
+  		<div id="nome-logo">
+        <span>HYDRA</span>
+        </div><!-- nome logo-->
+      </div> <!--cabeçalho do site -->
+	
+	<br />
+	 <div id="menu1">
+	<h:form>
+		<p:menubar>
+			<p:menuitem value="Home" action="index.xhtml" icon="ui-icon-home" 
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Empresas" action="empresa.xhtml" icon="ui-icon-contact"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Contatos" action="contato.xhtml" icon="ui-icon-person"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Produtos" action="produto.xhtml" icon="ui-icon-cart"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:submenu label="Atividades" icon="ui-icon-suitcase"
+				style="margin-left: 40px">
+
+				<p:menuitem value="Ligações" action="listaligacao.xhtml" icon="ui-icon-flag"></p:menuitem>
+				<p:menuitem value="Tarefas" action="listartarefa.xhtml" icon="ui-icon-pin-s"></p:menuitem>
+
+			</p:submenu>
+			
+			<p:menuitem value="Negócios" action="listanegocio.xhtml" style="margin-left: 40px" icon="ui-icon-lightbulb"></p:menuitem>
+			
+		</p:menubar>
+	</h:form>
+		</div><!-- div do menu -->
+		<br/>
+		<div id="corpo-tipo_empresa">
+		<div id="cadastro-empresa">
+		<p:panel header="Editar Telefone da Empresa">
+	<h:form>
+		
+		 <p:messages id="a" />
+		
+		 <p:panel header="Telefone">
+               
+                <h:panelGrid columns="2" cellpadding="5">
+             		
+             		<p:outputLabel value="Tipo de telefone" for="tipo"/>
+                    <p:selectOneMenu id="tipo" value="#{telefoneEmpresaControle.te.tipotelefone.id_tipotelefone}"   style="width:160px"
+                         effect="fade"   filter="true" filterMatchMode="startsWith" required="true">
+         			   <f:selectItem itemLabel="Selecionar" itemValue=""/>
+           			  <f:selectItems value="#{tipoFoneControle.lista}" var="listar" itemLabel="#{listar.nome}" itemValue="#{listar.id_tipotelefone}" />
+               			 <p:column>
+               				 <h:outputText value="#{listar.nome}" />
+              			 </p:column>
+		 		</p:selectOneMenu>
+	 		
+             		
+                     <p:outputLabel value="Numero " for="numero"/>
+                 <p:inputMask id="numero" value="#{telefoneEmpresaControle.te.numero}"  mask="(99)9999-9999" required="true"/>
+                 
+                     <h:inputHidden value="#{telefoneEmpresaControle.te.id_telefonee}"/>
+                </h:panelGrid>
+               
+                 <p:commandButton value="Voltar" icon="ui-icon-arrowreturnthick-1-w" action="listarfone.xhtml" style="margin-left:170px" immediate="true" />
+ 			<p:commandButton action="#{telefoneEmpresaControle.editar}" value="Salvar" icon="ui-icon-pencil" style="margin-left:30px" update="a" ajax="false"/>
+            </p:panel>
+			
+		</h:form>
+			</p:panel>
+			
+			<br/>
+			</div><!-- div cadastro empresa -->
+		</div><!-- div corpo -->
+</h:body>
+</html>

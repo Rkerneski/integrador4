@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+
+	<h:outputStylesheet library="CSS" name="style.css" />
+	<title>Editar produto</title>
+</h:head>
+<h:body>
+	<div id="cabecalho">
+      
+      <div id="imagen-logo">
+       <h:graphicImage library="imagem" name="hydraaa.png" />
+      </div><!-- imagen da logo -->
+  
+  
+  		<div id="nome-logo">
+        <span>HYDRA</span>
+        </div><!-- nome logo-->
+      </div> <!--cabeçalho do site -->
+	
+	<br />
+	 <div id="menu1">
+	<h:form>
+		<p:menubar>
+			<p:menuitem value="Home" action="index.xhtml" icon="ui-icon-home" 
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Empresas" action="empresa.xhtml" icon="ui-icon-contact"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Contatos" action="contato.xhtml" icon="ui-icon-person"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Produtos" action="produto.xhtml" icon="ui-icon-cart"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:submenu label="Atividades" icon="ui-icon-suitcase"
+				style="margin-left: 40px">
+
+				<p:menuitem value="Ligações" action="listaligacao.xhtml" icon="ui-icon-flag"></p:menuitem>
+				<p:menuitem value="Tarefas" action="listartarefa.xhtml" icon="ui-icon-pin-s"></p:menuitem>
+
+			</p:submenu>
+			
+			<p:menuitem value="Negócios" action="listanegocio.xhtml" style="margin-left: 40px" icon="ui-icon-lightbulb"></p:menuitem>
+			
+		</p:menubar>
+	</h:form>
+		</div><!--  div do menu -->
+	<div id="corpo-index">
+		<p:panel header="Editar dados do produto">
+	<h:form>
+		  <p:messages />
+		 <p:panel header="Dados do produto">
+              
+                <h:panelGrid columns="2" cellpadding="5">
+             		
+                    <h:outputLabel value="Nome " for="pro"/>
+                    <p:inputText id="pro" value="#{produtoControle.pro.nome}" required="true" label="Nome"/>
+ 
+                    <h:outputLabel value="valor " for="v"/>
+                    <p:inputNumber id="valor" value="#{produtoControle.pro.valor}"
+						required="true"  symbol="R$">
+						
+					</p:inputNumber>
+ 			<h:inputHidden value="#{produtoControle.pro.id_produto}"/>
+ 			<h:inputHidden/>
+		
+ 			
+                </h:panelGrid>
+                 <p:commandButton action="produto.xhtml" value="Voltar" immediate="true" icon="ui-icon-arrowreturnthick-1-w" style="margin-left:63px"/> 
+ 			<p:commandButton action="#{produtoControle.editar}" value="Salvar" icon="ui-icon-pencil" style="margin-left:20px" ajax="false"/>
+            </p:panel>
+				
+			
+		</h:form>
+			</p:panel>
+		</div><!--  div do corpo -->
+</h:body>
+</html>

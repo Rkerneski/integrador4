@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+   
+  <h:head>
+		<h:outputStylesheet library="CSS" name="style.css" />
+	<h:outputStylesheet library="fonte" name="css/font-awesome.css"/>
+	<h:outputStylesheet library="CSS" name="login.css" />
+	<title>Tela de Contato</title>
+  </h:head>
+   
+  <h:body>
+  <div id="cabecalho">
+      
+      <div id="imagen-logo">
+      <h:graphicImage library="imagem" name="hydraaa.png" />
+      </div><!-- imagen da logo -->
+  
+  
+  		<div id="nome-logo">
+        <span>HYDRA</span>
+        </div><!-- nome logo-->
+        
+        
+           
+      </div> <!--cabeçalho do site -->
+      <div id="corpo-index">
+      
+      <div id="centro">
+       <h:form id="a">
+       <p:panel header="Entre em Contato">
+					<p:messages/>
+					<h:panelGrid columns="2" cellpadding="5">
+					<h:outputText value="Nome"/>
+					<p:inputText/>
+					
+					<h:outputText value="E-mail"/>
+					<p:inputText/>
+					
+					<h:outputLabel value="Assunto " />
+						<p:inputTextarea 
+							required="true" label="Assunto"  rows="6" cols="25" autoResize="false"/>
+							
+								<h:outputLabel value="Mensagem " />
+						<p:inputTextarea 
+							required="true" label="Assunto"  rows="6" cols="25" autoResize="false"/>
+     			</h:panelGrid>
+     			<p:commandButton value="Enviar" immediate="true" type="reset" />
+              </p:panel>
+        </h:form>
+        
+        </div><!--  div no centro -->
+      </div><!-- div corpo -->
+      
+  </h:body>
+  </html>

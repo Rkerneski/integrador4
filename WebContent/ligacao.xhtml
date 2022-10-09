@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+
+	<h:outputStylesheet library="CSS" name="style.css" />
+	<title>Cadastrar Atividade de Ligações</title>
+</h:head>
+<h:body>
+	<div id="cabecalho">
+      
+      <div id="imagen-logo">
+       <h:graphicImage library="imagem" name="hydraaa.png" />
+      </div><!-- imagen da logo -->
+  
+  
+  		<div id="nome-logo">
+        <span>HYDRA</span>
+        </div><!-- nome logo-->
+      </div> <!--cabeçalho do site -->
+	
+	<br />
+	 <div id="menu1">
+	<h:form>
+		<p:menubar>
+			<p:menuitem value="Home" action="index.xhtml" icon="ui-icon-home" 
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Empresas" action="empresa.xhtml" icon="ui-icon-contact"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Contatos" action="contato.xhtml" icon="ui-icon-person"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Produtos" action="produto.xhtml" icon="ui-icon-cart"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:submenu label="Atividades" icon="ui-icon-suitcase"
+				style="margin-left: 40px">
+
+				<p:menuitem value="Ligações" action="listaligacao.xhtml" icon="ui-icon-flag"></p:menuitem>
+				<p:menuitem value="Tarefas" action="listartarefa.xhtml" icon="ui-icon-pin-s"></p:menuitem>
+
+			</p:submenu>
+			
+			<p:menuitem value="Negócios" action="listanegocio.xhtml" style="margin-left: 40px" icon="ui-icon-lightbulb"></p:menuitem>
+			
+		</p:menubar>
+	</h:form>
+	</div><!--  div do menu -->
+<div id="cadastro-empresa">
+	<br />
+	<h:form>
+	<p:panel header="Ligações">
+		<p:messages />
+					<h:panelGrid columns="3" cellpadding="5">
+
+						<h:outputLabel value="Empresa" />
+						<p:selectOneMenu value="#{ligacaoControle.li.empresa.id_empresa}"
+							style="width:160px" effect="fade" filter="true"
+							filterMatchMode="startsWith" required="true" label="Empresa">
+
+							<f:selectItem itemLabel="Selecionar" itemValue="" />
+
+							<f:selectItems value="#{empresaControle.lista}" var="listar"
+								itemLabel="#{listar.nome}" itemValue="#{listar.id_empresa}" />
+
+							<p:column>
+								<h:outputText value="#{listar.nome}" />
+
+							</p:column>
+						</p:selectOneMenu>
+						
+						<h:inputHidden/>
+								
+	
+						<h:outputLabel value="Contato" />
+						<p:selectOneMenu value="#{ligacaoControle.li.contato.id_contato}"
+							style="width:160px" effect="fade" filter="true"
+							filterMatchMode="startsWith" required="true" label="Contato">
+
+							<f:selectItem itemLabel="Selecionar" itemValue="" />
+
+							<f:selectItems value="#{contatoControle.lista}" var="listar"
+								itemLabel="#{listar.nome}" itemValue="#{listar.id_contato}" />
+
+							<p:column>
+								<h:outputText value="#{listar.nome}" />
+
+							</p:column>
+						</p:selectOneMenu>
+						<h:inputHidden/>
+							
+						<h:outputLabel value="Tipo de ligação" />
+						<p:selectOneMenu
+							value="#{ligacaoControle.li.tipoligacao.id_tipoligacao}"
+							style="width:160px" effect="fade" filter="true"
+							filterMatchMode="startsWith" required="true" label="Tipo de ligação">
+
+							<f:selectItem itemLabel="Selecionar" itemValue="" />
+
+							<f:selectItems value="#{tipoLigacaoControle.lista}" var="listar"
+								itemLabel="#{listar.nome}" itemValue="#{listar.id_tipoligacao}" />
+
+							<p:column>
+								<h:outputText value="#{listar.nome}" />
+
+							</p:column>
+						</p:selectOneMenu>
+						
+						
+					<p:commandButton  id="mais" action="tipoligacao.xhtml"  icon="ui-icon-plus" immediate="true">
+		 		  <p:tooltip for="mais" value="Cadastrar um novo tipo de ligação" trackMouse="true" />
+						</p:commandButton>
+						
+						
+
+						<h:outputLabel value="Data " />
+						
+						<p:calendar value="#{ligacaoControle.li.data}" required="true" label="Data">
+						 
+						</p:calendar>
+						
+							<h:inputHidden/>
+						
+						
+						<h:outputLabel value="Assunto " />
+						<p:inputTextarea value="#{ligacaoControle.li.assunto}"
+							required="true" label="Assunto"  rows="6" cols="25" autoResize="false"/>
+							
+						<h:inputHidden/>
+						<h:inputHidden/>
+							
+						<p:commandButton action="#{ligacaoControle.salvar}" value="Salvar" ajax="false" icon="ui-icon-disk" />
+
+					</h:panelGrid>
+				</p:panel>
+		
+
+
+		</h:form>
+
+</div><!-- div corpo -->
+</h:body>
+</html>

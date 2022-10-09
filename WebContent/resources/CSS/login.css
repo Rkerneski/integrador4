@@ -1,0 +1,77 @@
+#tudo{
+position:absolute;
+left:0px;
+top:0px;
+width:100%;
+height:100%;
+background-image: linear-gradient(to top, white,#A3D1F8 );
+}
+#formulario{
+position:absolute;
+left:0px;
+top:30%;
+
+}
+#logo{
+	font-size:60px;
+	font-family:algerian;
+	color:#F00;
+	}
+#login{
+position:absolute;
+left:22%;
+top:20%;
+width:40%;
+height:90%;
+background-image: linear-gradient(to bottom, white,#A3D1F8 );
+}
+
+#teste{
+position:absolute;
+left:33%;
+top:30%;
+width:40%;
+height:90%;
+
+}
+
+#login input{
+width:100%;
+height:36px;
+padding:5 10px;
+margin:0 auto;
+border:1px solid:#999;
+font:15px verdana;
+}
+	h5{
+	font-size:17px;
+	font-family:arial;
+	color:blue;
+	position:relative;
+	left:09%;
+	}
+h1{
+	
+	
+font:50px georgia,"Times new Roman", times serif;
+display:block;
+color:#00F;
+
+text-align:center;
+padding:20 25px;
+
+}
+
+
+#login span{
+	
+font:20px georgia,"Times new Roman", times serif;
+display:block;
+color:#039;
+
+text-align:left;
+padding:20 25px;
+}
+
+
+

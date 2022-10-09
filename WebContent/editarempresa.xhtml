@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+
+	<h:outputStylesheet library="CSS" name="style.css" />
+	<title>Editar empresa</title>
+</h:head>
+<h:body>
+	<div id="cabecalho">
+	<div id="imagen-logo">
+	 <h:graphicImage library="imagem" name="hydraaa.png" />
+      </div><!-- imagen da logo -->
+  
+  
+  		<div id="nome-logo">
+        <span>HYDRA</span>
+        </div><!-- nome logo-->
+      </div> <!--cabeçalho do site -->
+	
+	<br />
+	 <div id="menu1">
+	<h:form>
+		<p:menubar>
+			<p:menuitem value="Home" action="index.xhtml" icon="ui-icon-home" 
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Empresas" action="empresa.xhtml" icon="ui-icon-contact"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Contatos" action="contato.xhtml" icon="ui-icon-person"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Produtos" action="produto.xhtml" icon="ui-icon-cart"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:submenu label="Atividades" icon="ui-icon-suitcase"
+				style="margin-left: 40px">
+
+				<p:menuitem value="Ligações" action="listaligacao.xhtml" icon="ui-icon-flag"></p:menuitem>
+				<p:menuitem value="Tarefas" action="listartarefa.xhtml" icon="ui-icon-pin-s"></p:menuitem>
+
+			</p:submenu>
+			
+			<p:menuitem value="Negócios" action="listanegocio.xhtml" style="margin-left: 40px" icon="ui-icon-lightbulb"></p:menuitem>
+			
+		</p:menubar>
+	</h:form>
+		</div><!-- div menu -->
+	<div id="corpo-index">
+		
+		<div id="cadastro-empresa">
+		<p:panel header="Editar dados da Empresa">
+	<h:form>
+		
+		 <p:messages id="a" />
+		
+		 <p:panel header="Dados da empresa">
+               
+                <h:panelGrid columns="2" cellpadding="5">
+             		
+             		<h:outputLabel value="Tipo empresa" />
+						<p:selectOneMenu value="#{empresaControle.empresa.tipoempresa.id_tipoEmpresa}"
+							style="width:160px" effect="fade" filter="true"
+							filterMatchMode="startsWith">
+
+							<f:selectItem itemLabel="Selecionar" itemValue="" />
+
+							<f:selectItems value="#{tipoEmpresaControle.lista}" var="listar"
+								itemLabel="#{listar.nome}" itemValue="#{listar.id_tipoEmpresa}" />
+
+							<p:column>
+								<h:outputText value="#{listar.nome}" />
+
+							</p:column>
+						</p:selectOneMenu>
+             		
+                    <h:outputLabel value="Nome " />
+                    <p:inputText value="#{empresaControle.empresa.nome}" required="true" label="Nome"/>
+ 
+                    <h:outputLabel value="CNPJ " />
+ 					 <p:inputMask id="cnpj" mask="99.999.999/9999-99" value="#{empresaControle.empresa.cnpj}" required="true" label="CNPJ"/>
+ 					 
+                    <h:outputLabel value="Responsavel " />
+                    <p:inputText value="#{empresaControle.empresa.responsavel}" required="true" label="Responsavel"/>
+                    
+                     <h:outputLabel value="Cidade " />
+                    <p:inputText value="#{empresaControle.empresa.cidade}" required="true" label="Cidade" />
+                    
+                    
+                      <h:outputLabel value="Endereço " />
+                    <p:inputText value="#{empresaControle.empresa.endereco}" required="true" label="Endereço" />
+                    
+                      <h:outputLabel value="Numero " />
+                    <p:inputText value="#{empresaControle.empresa.numero}" required="true" label="Numero"/>
+                    
+                     <h:inputHidden value="#{empresaControle.empresa.id_empresa}"/>
+                     <h:inputHidden/>
+                  
+ 			
+ 			
+                </h:panelGrid>
+                <p:commandButton value="Voltar" icon="ui-icon-arrowreturnthick-1-w" action="empresa.xhtml" style="margin-left:130px" immediate="true" />
+ 			<p:commandButton action="#{empresaControle.editar}" value="salvar" icon="ui-icon-pencil" style="margin-left:20px" update="a" ajax="false"/>
+            </p:panel>
+				
+			
+		</h:form>
+			</p:panel>
+			
+			<br/>
+			</div><!--  cadastro de empresa -->
+		</div><!-- div do corpo -->	
+		
+</h:body>
+</html>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+
+	<h:outputStylesheet library="CSS" name="style.css" />
+	<title>Editar Contato</title>
+</h:head>
+<h:body>
+	<div id="cabecalho">
+      
+      <div id="imagen-logo">
+       <h:graphicImage library="imagem" name="hydraaa.png" />
+      </div><!-- imagen da logo -->
+  
+  
+  		<div id="nome-logo">
+        <span>HYDRA</span>
+        </div><!-- nome logo-->
+      </div> <!--cabeçalho do site -->
+	
+	<br />
+	 <div id="menu1">
+	<h:form>
+		<p:menubar>
+			<p:menuitem value="Home" action="index.xhtml" icon="ui-icon-home" 
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Empresas" action="empresa.xhtml" icon="ui-icon-contact"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Contatos" action="contato.xhtml" icon="ui-icon-person"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Produtos" action="produto.xhtml" icon="ui-icon-cart"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:submenu label="Atividades" icon="ui-icon-suitcase"
+				style="margin-left: 40px">
+
+				<p:menuitem value="Ligações" action="listaligacao.xhtml" icon="ui-icon-flag"></p:menuitem>
+				<p:menuitem value="Tarefas" action="listartarefa.xhtml" icon="ui-icon-pin-s"></p:menuitem>
+
+			</p:submenu>
+			
+			<p:menuitem value="Negócios" action="listanegocio.xhtml" style="margin-left: 40px" icon="ui-icon-lightbulb"></p:menuitem>
+			
+		</p:menubar>
+	</h:form>
+		</div><!--  div do menu -->
+	<div id="corpo">
+	<br />
+		<p:panel header="Editar dados do contato">
+	<h:form>
+		
+		 <p:messages />
+		
+		 <p:panel header="Dados do contato">
+               
+                <h:panelGrid columns="2" cellpadding="5">
+               
+						<p:outputLabel value="Tipo de contato" for="tipo" />
+						<p:selectOneMenu 
+							value="#{contatoControle.contato.tipocontato.id_tipocontato}"
+							style="width:160px" effect="fade" filter="true"
+							filterMatchMode="startsWith" id="tipo" label="Tipo de contato" required="true">
+
+							<f:selectItem itemLabel="Selecionar" itemValue="" />
+
+							<f:selectItems value="#{tipoContatoControle.lista}" var="listar"
+								itemLabel="#{listar.nome}" itemValue="#{listar.id_tipocontato}" />
+
+							<p:column>
+								<h:outputText value="#{listar.nome}" />
+
+							</p:column>
+						</p:selectOneMenu>
+
+						
+
+						<p:outputLabel value="Origem do contato" for="o"/>
+						<p:selectOneMenu
+							value="#{contatoControle.contato.origemcontato.id_origemcontato}"
+							style="width:160px" effect="fade" filter="true"
+							filterMatchMode="startsWith" id="o" label="Origem do contato" required="true">
+
+							<f:selectItem itemLabel="Selecionar" itemValue="" />
+
+							<f:selectItems value="#{origemContatoControle.lista}"
+								var="listar" itemLabel="#{listar.nome}"
+								itemValue="#{listar.id_origemcontato}" />
+
+							<p:column>
+								<h:outputText value="#{listar.nome}" />
+
+							</p:column>
+						</p:selectOneMenu>
+
+
+						<p:outputLabel value="Nome " for="nome" />
+						<p:inputText id="nome" value="#{contatoControle.contato.nome}"
+							required="true" label="Nome" />
+							
+							
+
+						<p:outputLabel value="CPF " for="cpf" />
+						<p:inputText id="cpf" value="#{contatoControle.contato.cpf}"
+							required="true" label="CPF" />
+						
+
+						<p:outputLabel value="Responsavel " for="res" />
+						<p:inputText id="res"
+							value="#{contatoControle.contato.responsavel}" required="true"
+							label="Responsavel" />
+							
+						
+							
+							<p:outputLabel value="Cidade " for="ci" />
+						<p:inputText id="ci" value="#{contatoControle.contato.cidade}"
+							required="true" label="Cidade" />	
+							
+							 
+							
+							<p:outputLabel value="Endereço " for="en" />
+						<p:inputText id="en" value="#{contatoControle.contato.endereco}"
+							required="true" label="Endereço" />
+							
+						
+
+							<p:outputLabel value="Numero " for="nu" />
+						<p:inputText id="nu" value="#{contatoControle.contato.numero}"
+							required="true" label="Numero" />
+							
+							<p:outputLabel value="Data de aniversario" for="data" />
+						
+						<p:calendar id="data" value="#{contatoControle.contato.aniversario}" label="Data de aniversario" 
+						navigator="true" yearRange="c-100:c+100" required="true" />
+						 
+							<h:inputHidden value="#{contatoControle.contato.id_contato}"/>
+							<h:inputHidden /> 
+						
+
+					</h:panelGrid>
+					
+					<p:commandButton value="Voltar" icon="ui-icon-arrowreturnthick-1-w" style="margin-left:180px" action="contato.xhtml" immediate="true" />
+						<p:commandButton action="#{contatoControle.editar}" value="Salvar" style="margin-left:20px" icon="ui-icon-pencil"  ajax="false"/>
+            </p:panel>
+				
+			
+		</h:form>
+			</p:panel>
+			</div><!-- div corpo -->
+			<br/>
+			
+		
+</h:body>
+</html>

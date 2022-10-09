@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* CSS Document */
+
+#tudo{
+position:absolute;
+left:0px;
+top:0px;
+width:100%;
+height:100%;
+background-image: linear-gradient(to top, white,#A3D1F8 );
+}
+
+#formulario{
+position:absolute;
+left:33%;
+top:30%;
+width:40%;
+height:45%;
+
+}
+
+#cadastro{
+position:absolute;
+left:5%;
+top:10%;
+
+}
+#texto-logo{
+	width:50%;
+	height:200px;
+	position:relative;
+	top:10%;
+	left:42%;
+
+
+	
+}
+#logo{
+	font-size:60px;
+	font-family:algerian;
+	color:#F00;
+	
+	}
+	#texto-logo span{
+	font-size:60px;
+	font-family:algerian;
+	color:#F00;
+	
+	}
+
+#cadastro span{
+	
+font:20px georgia,"Times new Roman", times serif;
+display:block;
+color:#039;
+
+text-align:left;
+padding:20 25px;
+}
+
+#cadastro form{
+width:80%;
+
+padding:0 5%;
+}

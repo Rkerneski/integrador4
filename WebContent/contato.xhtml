@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	
+	<h:outputStylesheet library="CSS" name="style.css" />
+	<title>Contato</title>
+</h:head>
+<h:body>
+<div id="cabecalho">
+      
+      <div id="imagen-logo">
+      <h:graphicImage library="imagem" name="hydraaa.png" />
+      </div><!-- imagen da logo -->
+  
+  
+  		<div id="nome-logo">
+        <span>HYDRA</span>
+        </div><!-- nome logo-->
+        
+        <!-- aqui começa os menus superioress -->
+        <div id="fale">
+         <p:commandLink value=" Fale conosco " action="Login.xhtml" immediate="true"/>
+        </div><!-- fale conosco -->
+              
+         <div id="sair">
+        <p:commandLink value=" Logout " action="Login.xhtml" immediate="true"/>      
+        </div><!-- div sair -->
+        
+           <!-- aqui termina os menus superioress -->
+           
+      </div> <!--cabeçalho do site -->
+	
+	<br />
+	 <div id="menu1">
+	<h:form>
+		<p:menubar>
+			<p:menuitem value="Home" action="index.xhtml" icon="ui-icon-home" 
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Empresas" action="empresa.xhtml" icon="ui-icon-contact"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Contatos" action="contato.xhtml" icon="ui-icon-person"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:menuitem value="Produtos" action="produto.xhtml" icon="ui-icon-cart"
+				style="margin-left: 40px"></p:menuitem>
+
+			<p:submenu label="Atividades" icon="ui-icon-suitcase"
+				style="margin-left: 40px">
+
+				<p:menuitem value="Ligações" action="listaligacao.xhtml" icon="ui-icon-flag"></p:menuitem>
+				<p:menuitem value="Tarefas" action="listartarefa.xhtml" icon="ui-icon-pin-s"></p:menuitem>
+
+			</p:submenu>
+			
+			<p:menuitem value="Negócios" action="listanegocio.xhtml" style="margin-left: 40px" icon="ui-icon-lightbulb"></p:menuitem>
+			
+		</p:menubar>
+	</h:form>
+	</div><!--  div do menu -->
+	<div id="corpo">
+
+		<p:panel header="Contato">
+	<h:form>
+	
+		<p:commandButton action="cadastrarcontato.xhtml" value="Novo contato" />
+		<p:commandButton action="listarfoneC.xhtml" value="Pesquisar por telefone" icon="ui-icon-search" style="margin-left:40px"/>
+		<p:commandButton action="listarcomunicadorC.xhtml" value="Pesquisar por comunicador" icon="ui-icon-search" style="margin-left:40px"/>
+		<p:commandButton action="listarce.xhtml" value="Pesquisar por empresa" icon="ui-icon-search" style="margin-left:40px"/>
+		<br/><br/>
+	
+		<p:dataTable var="emp" value="#{contatoControle.lista}" paginator="true" rows="10">
+			
+			<p:column filterBy="#{emp.nome}" headerText="Nome">
+				<h:outputText value="#{emp.nome}" />
+			</p:column>
+
+			<p:column filterBy="#{emp.cpf}" headerText="CPF">
+				<h:outputText value="#{emp.cpf}" />
+			</p:column>
+			
+			<p:column filterBy="#{emp.cidade}" headerText="Cidade">
+				<h:outputText value="#{emp.cidade}" />
+			</p:column>
+
+			<p:column filterBy="#{emp.aniversario}"  headerText="Aniversario">
+				<h:outputText value="#{emp.aniversario}" >
+				<f:convertDateTime pattern="dd/MM/yyyy"/>
+				</h:outputText>
+			</p:column>
+			
+			<p:column filterBy="#{emp.tipocontato.nome}" headerText="Tipo Contato">
+				<h:outputText value="#{emp.tipocontato.nome}" />
+			</p:column>
+			
+			<p:column headerText="">
+				<p:commandButton action="editarcontato.xhtml" value="Editar" icon="ui-icon-pencil"
+					style="margin-left: 10px">
+					<f:setPropertyActionListener value="#{emp}"
+						target="#{contatoControle.contato}" />
+				</p:commandButton>
+			</p:column>
+		</p:dataTable> 
+		
+		<br />
+
+	</h:form>
+	</p:panel>
+	</div><!-- div corpo -->
+
+</h:body>
+</html>
