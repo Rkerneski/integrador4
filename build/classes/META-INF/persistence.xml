@@ -9,7 +9,7 @@
 
 		<properties>
 			
-			
+			<!-- sqlServer -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
 
 			<property name="javax.persistence.jdbc.driver"
